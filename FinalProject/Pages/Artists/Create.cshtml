@@ -1,0 +1,63 @@
+@page
+@model FinalProject.Pages.Artists.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h3 style="color: dodgerblue; font-style: italic; font-weight: bold">Artist</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Artist.ArtistName" class="control-label"></label>
+                <input asp-for="Artist.ArtistName" class="form-control" />
+                <span asp-validation-for="Artist.ArtistName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist.Birthday" class="control-label"></label>
+                <input asp-for="Artist.Birthday" class="form-control" />
+                <span asp-validation-for="Artist.Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist.Albums.Title" class="control-label"></label>
+                <input asp-for="Artist.Albums.Title" class="form-control" />
+                <span asp-validation-for="Artist.Albums.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist.Albums.Genre" class="control-label"></label>
+                <input asp-for="Artist.Albums.Genre" class="form-control" />
+                <span asp-validation-for="Artist.Albums.Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist.Albums.ReleaseDate" class="control-label"></label>
+                <input asp-for="Artist.Albums.ReleaseDate" class="form-control" />
+                <span asp-validation-for="Artist.Albums.ReleaseDate" class="text-danger"></span>
+            </
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

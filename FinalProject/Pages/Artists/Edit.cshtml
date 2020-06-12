@@ -1,0 +1,92 @@
+@page
+@model FinalProject.Pages.Artists.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h3 style="color: dodgerblue; font-style: italic; font-weight: bold">Artist</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Artist.ArtistID" />
+            <div class="form-group">
+                <label asp-for="Artist.ArtistName" class="control-label"></label>
+                <input asp-for="Artist.ArtistName" class="form-control" />
+                <span asp-validation-for="Artist.ArtistName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist.Birthday" class="control-label"></label>
+                <input asp-for="Artist.Birthday" class="form-control" />
+                <span asp-validation-for="Artist.Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist.Albums.Title" class="control-label"></label>
+                <input asp-for="Artist.Albums.Title" class="form-control" />
+                <span asp-validation-for="Artist.Albums.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist.Albums.Genre" class="control-label"></label>
+                <input asp-for="Artist.Albums.Genre" class="form-control" />
+                <span asp-validation-for="Artist.Albums.Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist.Albums.ReleaseDate" class="control-label"></label>
+                <input asp-for="Artist.Albums.ReleaseDate" class="form-control" />
+                <span asp-validation-for="Artist.Albums.ReleaseDate" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Artist.Albums.Songs" class="control-label"></label>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>Song Name</th>
+                    <th>Length</th>
+                </tr>
+                @foreach (var item in Model.Artist.Albums.Songs)
+                {
+                    <tr>
+                        <td>
+                            <input asp-for="@item.SongName" class="form-control" />
+                            <span asp-validation-for="@item.SongName" class="text-danger"></span>
+                        </td>
+                        <td>
+                            <input asp-for="@item.SongLength" class="form-control" />
+                            <span asp-validation-for="@item.SongLength" class="text-danger"></span>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
